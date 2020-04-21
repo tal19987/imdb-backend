@@ -42,6 +42,7 @@ _mailinglist
 docs/_build/
 .vscode
 
+test.py
 # Coverage reports
 htmlcov/
 .coverage
