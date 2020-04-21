@@ -3,7 +3,7 @@ There was no rating scale for the movies and i had to go to imdb and check each 
 This is why i was thinking to create this simple web app.  
 
 Server side using ** Python & Flask ** ;  
-Frontend side using ** React and Bootstrap **;  
+Frontend side using ** React and Bootstrap ** ;  
 
 I also using- ** AWS, Kubernetes, CI/CD, Unit Testing, Jenkins** etc for the Pipeline.  
   
