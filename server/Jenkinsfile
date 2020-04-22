@@ -6,7 +6,7 @@ pipeline {
         registryCredential = "dockerhub-account"
     }
     stages {
-        stage ("docker") {
+        stage ("Build Docker Image") {
             steps {
                 script {
                     customImg = docker.build("tal19987/imdb:python-${env.BUILD_ID}", "-f ./server/Dockerfile server/")
@@ -19,7 +19,7 @@ pipeline {
     }
     post {
         always {
-            sh "docker rm -f ${customImg.id}"
+            sh "docker rmi -f ${customImg.id}"
         }
     }
 }
