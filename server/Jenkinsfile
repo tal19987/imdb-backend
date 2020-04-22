@@ -1,13 +1,13 @@
 pipeline {
-    agent {dockerfile true};
-        stages {
-            stage('Docker') {
-                steps {
-                    dir("./server/") {
-                        sh "in container"
-                        sh "hostname"
-                }
-            }
+    agent {
+        dockerfile {
+            dir 'server'
+        }
+    };
+    stages {
+        node {
+            def customImg = docker.build("tal19987/imdb:python-${env.BUILD_ID}", "-f server/Dockerfile")
+            customImg.push()
         }
     }
 }
