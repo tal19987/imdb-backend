@@ -2,7 +2,7 @@
 FROM python:latest
 
 # Copies file to the image
-COPY server/* /app
+COPY . /app
 
 # Change the dir
 WORKDIR /app
