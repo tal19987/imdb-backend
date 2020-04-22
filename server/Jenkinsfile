@@ -9,7 +9,7 @@ pipeline {
         stage ("docker") {
             steps {
                 script {
-                    customImg = docker.build("tal19987/imdb:python-${env.BUILD_ID}", "-f server/Dockerfile")
+                    customImg = docker.build("tal19987/imdb:python-${env.BUILD_ID}", "-f ./server/Dockerfile server/")
                     docker.withRegistry('',registryCredential) {
                         customImg.push()
                     }
