@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        dockerfile {
-            dir 'server'
-        }
-    }
+    agent any
     environment {
         customImg = ""
         registry = "tal19987/imdb"
