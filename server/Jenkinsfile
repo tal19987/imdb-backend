@@ -5,9 +5,11 @@ pipeline {
         }
     };
     stages {
-        node {
-            def customImg = docker.build("tal19987/imdb:python-${env.BUILD_ID}", "-f server/Dockerfile")
-            customImg.push()
+        stage ("docker") {
+            node {
+                def customImg = docker.build("tal19987/imdb:python-${env.BUILD_ID}", "-f server/Dockerfile")
+                customImg.push()
+            }
         }
     }
 }
