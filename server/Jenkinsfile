@@ -6,13 +6,17 @@ pipeline {
     }
     environment {
         customImg = ""
+        registry = "tal19987/imdb"
+        registryCredential = "dockerhub-account"
     }
     stages {
         stage ("docker") {
             steps {
                 script {
                     customImg = docker.build("tal19987/imdb:python-${env.BUILD_ID}", "-f server/Dockerfile")
-                    customImg.push()
+                    docker.withRegistry('',registryCredential) {
+                        customImg.push()
+                    }
                 }
             }
         }
