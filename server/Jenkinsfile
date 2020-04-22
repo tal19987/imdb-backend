@@ -6,7 +6,7 @@ pipeline {
     };
     stages {
         stage ("docker") {
-            step {
+            steps {
                 node {
                     def customImg = docker.build("tal19987/imdb:python-${env.BUILD_ID}", "-f server/Dockerfile")
                     customImg.push()
