@@ -11,7 +11,7 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 
 # Defined Enyrtpoint when starting a container
-ENTRYPOINT ["python"]
+ENTRYPOINT ["python3"]
 
 # Defined CMD when starting a container
 CMD ["server.py"]
