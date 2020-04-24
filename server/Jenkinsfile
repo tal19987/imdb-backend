@@ -3,7 +3,7 @@ pipeline {
     environment {
         registry = "tal19987/imdb"
         registryCredential = "dockerhub-account"
-        image = registry + ":backend-${env.BUILD_ID}"
+        image = "${registry}:backend-${env.BUILD_ID}"
         google_project_id = "learned-battery-260616"
         kuberneteers_cluster_name = "cluster-1"
         credentials_id = "My First Project"
