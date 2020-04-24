@@ -15,12 +15,13 @@ items:
                 labels:
                     app: backend
         spec:
-            containers:
-              - name: backend
-                image: tal19987/imdb:backend
-                imagePullPolicy: Always
-                ports:
-                - containerPort: 8080
+          containers:
+            - name: backend
+              image: tal19987/imdb-backend
+              imagePullPolicy: Always
+              ports:
+              - containerPort: 8080
+
                 
   - apiVersion: v1
     kind: Service
