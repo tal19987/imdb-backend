@@ -21,8 +21,8 @@ pipeline {
             steps {
                 script {
                         docker.withRegistry('',registryCredential) {
-                        customImg.push()
-                        customImg.push('latest')
+                            customImg.push()
+                            customImg.push('latest')
                     }
                 }
             }
