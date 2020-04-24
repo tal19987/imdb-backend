@@ -5,7 +5,7 @@ This is why i was thinking to create this simple web app.
 Server side using **Python & Flask** ;  
 Frontend side using **React and Bootstrap** ;  
 
-I also using- **AWS, Kubernetes, Docker, CI/CD, Unit Testing, Jenkins, DockerHub** etc for the Pipeline.  
+I also using- **AWS (EC2), Kubernetes, Docker, CI/CD, Unit Testing, Jenkins, DockerHub** etc for the Pipeline.  
 
 This site is served on DNS: (some-DNS);
 
