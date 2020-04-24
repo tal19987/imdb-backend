@@ -13,8 +13,5 @@ RUN pip3 install -r requirements.txt
 # Exposes Container to port 8080
 EXPOSE 8080
 
-# Defined Enyrtpoint when starting a container
-ENTRYPOINT ["python3"]
-
 # Defined CMD when starting a container
-CMD ["server.py"]
+CMD ["python3","server.py"]
