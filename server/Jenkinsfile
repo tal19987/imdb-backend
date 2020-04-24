@@ -1,16 +1,11 @@
 pipeline {
-    agent {
-        node {
-            label 'master'
-            customWorkspace '/var/lib/jenkins/workspace/imdb-python-backend/server'
-        }
-    }
+    agent any
     environment {
-        repository = "tal19987/imdb-backend"
-        dockerhub_credential = "dockerhub-account"
-        imageName = "${repository}:backend-${env.BUILD_ID}"
+        registry = "tal19987/imdb"
+        registryCredential = "dockerhub-account"
+        image = "${registry}:backend-${env.BUILD_ID}"
         google_project_id = "learned-battery-260616"
-        kubernetes_cluster_name = "cluster-1"
+        kuberneteers_cluster_name = "cluster-1"
         location = "us-central1-c"
         credentials_id = "My First Project"
     }
@@ -18,17 +13,17 @@ pipeline {
         stage ("Build Docker Image") {
             steps {
                 script {
-                    image = docker.build(imageName)
+                    customImg = docker.build(image, "-f ./server/Dockerfile")
                 }
             }
         }
-        stage ("Publish to DockerHub Repository")
+        stage ("Publish to Docker Registry")
         {
             steps {
                 script {
-                        docker.withRegistry('',dockerhub_credential) {
-                            image.push()
-                            image.push('latest')
+                        docker.withRegistry('',registryCredential) {
+                            customImg.push()
+                            customImg.push('latest')
                     }
                 }
             }
@@ -38,9 +33,9 @@ pipeline {
                 step ([
                     $class: 'KubernetesEngineBuilder',
                     projectId: env.google_project_id,
-                    clusterName: env.kubernetes_cluster_name,
+                    clusterName: env.kuberneteers_cluster_name,
                     location: env.location,
-                    manifestPattern: 'backend-deployment.yaml',
+                    manifestPattern: './server/backend-deployment.yaml',
                     credentialsId: env.credentials_id,
                     verifyDeployments: true
                 ]) 
@@ -49,7 +44,7 @@ pipeline {
     }
     post {
         always {
-            sh "docker rmi -f ${image.id}"
+            sh "docker rmi -f ${customImg.id}"
         }
     }
 }
