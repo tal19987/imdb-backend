@@ -1,6 +1,7 @@
 pipeline {
     agent {
         node {
+            label 'master'
             customWorkspace '/var/lib/jenkins/workspace/imdb-python-backend/server'
         }
     }
@@ -48,7 +49,7 @@ pipeline {
     }
     post {
         always {
-            sh "docker rmi -f ${customImg.id}"
+            sh "docker rmi -f ${image.id}"
         }
     }
 }
