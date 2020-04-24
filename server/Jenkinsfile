@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        registry = "tal19987/imdb"
+        registry = "tal19987/imdb-backend"
         registryCredential = "dockerhub-account"
         image = "${registry}:backend-${env.BUILD_ID}"
         google_project_id = "learned-battery-260616"
