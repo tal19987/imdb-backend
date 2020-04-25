@@ -35,7 +35,7 @@ pipeline {
                     projectId: env.google_project_id,
                     clusterName: env.kubernetes_cluster_name,
                     location: env.location,
-                    manifestPattern: './server/deploy.yaml',
+                    manifestPattern: './server/backend-deployment.yaml',
                     credentialsId: env.credentials_id,
                 ]) 
             }
