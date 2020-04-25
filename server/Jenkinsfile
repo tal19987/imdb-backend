@@ -5,7 +5,7 @@ pipeline {
         registryCredential = "dockerhub-account"
         image = "${registry}:backend-${env.BUILD_ID}"
         google_project_id = "learned-battery-260616"
-        kuberneteers_cluster_name = "cluster-1"
+        kubernetes_cluster_name = "cluster-1"
         location = "us-central1-c"
         credentials_id = "My First Project"
     }
@@ -33,11 +33,10 @@ pipeline {
                 step ([
                     $class: 'KubernetesEngineBuilder',
                     projectId: env.google_project_id,
-                    clusterName: env.kuberneteers_cluster_name,
+                    clusterName: env.kubernetes_cluster_name,
                     location: env.location,
-                    manifestPattern: './server/backend-deployment.yaml',
+                    manifestPattern: './server/deploy.yaml',
                     credentialsId: env.credentials_id,
-                    verifyDeployments: true
                 ]) 
             }
         }
