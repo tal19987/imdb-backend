@@ -9,7 +9,6 @@ CORS(app)
 data = {
     'movies': []
 }
-json_data = json.dumps(data)
 
 @app.route('/')
 def movies():
