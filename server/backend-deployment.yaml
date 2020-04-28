@@ -17,5 +17,6 @@ spec:
       containers:
       - name: backend
         image: tal19987/imdb-backend:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
