@@ -37,6 +37,7 @@ pipeline {
                     location: env.location,
                     manifestPattern: './server/backend-deployment.yaml',
                     credentialsId: env.credentials_id,
+                    verifyDeployments: true
                 ]) 
             }
         }
