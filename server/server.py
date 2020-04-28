@@ -11,7 +11,7 @@ data = {
 }
 json_data = json.dumps(data)
 
-@app.route('/movies')
+@app.route('/')
 def movies():
     movies = request.args.get('movie').split(',')
     p = Pool(processes=10)
